@@ -115,6 +115,9 @@ ALTER table user1
 alter COLUMN country set not null;
 ALTER table user1
 alter COLUMN country drop not null;
-
+--#add constraint unique 
 alter TABLE user1
 ADD constraint unique_email UNIQUE(email);
+--#drop constraint
+alter TABLE user1
+drop constraint unique_email;
