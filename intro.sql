@@ -121,3 +121,35 @@ ADD constraint unique_email UNIQUE(email);
 --#drop constraint
 alter TABLE user1
 drop constraint unique_email;
+
+
+
+---# Foreign KEY CONSTRAINT referred 
+--Employee table --> each employee belongs to a department 
+--department table 
+--each department has many employees
+
+CREATE TABLE
+    Department (
+        deptID SERIAL PRIMARY KEY,
+        deptName VARCHAR(50) 
+    );
+insert into department VALUES (1, 'IT');
+--# DELETE row
+DELETE FROM department where deptID = 1;
+SELECT * FROM department;
+
+create table Employee(
+  empID serial PRIMARY KEY,
+  empName VARCHAR(50) NOT NULL,
+  departmentID INT,
+  constraint Fk_constraint_dept
+  Foreign Key (departmentID) 
+  REFERENCES Department (deptID)
+);
+
+
+
+insert into Employee VALUES (1, 'kamrul', 1);
+DELETE FROM Employee WHERE empID =1;
+SELECT * from Employee;
