@@ -273,8 +273,8 @@ VALUES
 
 ---SELECT SOME COLUMN
 SELECT empId,name,deptId, salary from employee;
-
-
+---#inique data
+SELECT DISTINCT deptId   FROM employee;
 
 ---filtering
 select * from employee
