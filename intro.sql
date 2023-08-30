@@ -134,7 +134,7 @@ CREATE TABLE
         deptID SERIAL PRIMARY KEY,
         deptName VARCHAR(50) 
     );
-insert into department VALUES (1, 'IT');
+insert into department VALUES ( 5,'SALES');
 --# DELETE row
 DELETE FROM department where deptID = 1;
 SELECT * FROM department;
@@ -210,3 +210,134 @@ INSERT INTO
   SELECT * from courses;
 
 ---date yyyy-mm-DD
+
+
+CREATE TABLE IF NOT EXISTS  department(
+  deptID SERIAL PRIMARY KEY,
+  name text not null
+);
+
+CREATE TABLE IF NOT EXISTS Employee(
+  empID SERIAL PRIMARY KEY,
+  name text not null,
+  email text not null,
+  salary INTEGER not null,
+  joining_date date not null,
+  deptId INTEGER not null,
+  CONSTRAINT fk_deptID
+  FOREIGN KEY(deptID)
+  REFERENCES department (deptID) 
+);
+INSERT INTO
+    employee (
+        name,
+        email,
+        salary,
+        joining_date
+    )
+VALUES (
+        'kamrul11',
+        'kamrul33@gmail.com',
+        36556,
+        '2012-07-12',
+        'IT'
+    ), (
+        'kamrul43',
+        'kamrul43@gmail.com',
+        66666,
+        '2221-07-22',
+        'HR'
+    );
+
+SELECT * FROM department;
+SELECT * FROM Employee;
+
+
+DROP TABLE employee;
+
+
+INSERT INTO
+    employee (name, email,salary,joining_date,deptId )
+VALUES
+( 'kamrul111','kamrul331@gmail.com',36556, '2012-07-12', 1),
+( 'kamrul431','kamrul431@gmail.com',667666,'2221-07-22', 3),
+( 'kamrul113','kamrul333@gmail.com',365756, '2012-07-12', 4),
+( 'kamrul443','kamrul443@gmail.com',666766,'2221-07-22', 3),
+( 'kamrul11','kamrul33@gmail.com',36556, '2012-07-12', 3),
+( 'kamrul433','kamrul43gmail.com',66666,'2221-07-22', 2),
+( 'kamrul31','kamrul333@gmail.com',36556, '2012-07-12', 2),
+( 'kamrul433','kamrul43@gmail.com',66666,'2221-07-22', 5),
+( 'kamrul131','kamrul34@gmail.com',36556, '2012-07-12', 5),
+( 'kamrul433','kamrul434@gmail.com',66666,'2221-07-22', 2);
+
+
+---SELECT SOME COLUMN
+SELECT empId,name,deptId, salary from employee;
+
+
+
+---filtering
+select * from employee
+where salary > 60000;
+select * from employee
+where salary > 60000 AND salary <90000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---use selext
