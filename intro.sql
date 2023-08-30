@@ -153,3 +153,60 @@ create table Employee(
 insert into Employee VALUES (1, 'kamrul', 1);
 DELETE FROM Employee WHERE empID =1;
 SELECT * from Employee;
+
+
+create table courses (
+  course_id SERIAL PRIMARY KEY,
+  course_name VARCHAR(255) not NULL,
+  description VARCHAR(255),
+  publication_date DATE
+);
+SELECT * from courses;
+---date yyyy-mm-DD
+INSERT INTO
+  courses (course_name, description, publication_date)
+  VALUES
+  ('PostgreSQL for Developer', 'A complete Postgresql for Developer', '2020-07-13'),
+  ('PostgreSQL Administration', 'A postgreSQL Guide DBA', NULL),
+  ('PostgreSQL High Performance', NULL,NULL),
+  ('PostgreSQL Bootcamp', 'Learn PostgreSQL Via Bootcamp', '2012-09-20'),
+  ('Mastering PostgreSQL', 'Mastering PostgreSQL IN 21 Days', '2012-09-12');
+
+
+
+
+  ---UPDATE DATABASE TABLE ROW
+
+  --UPDATE table_name 
+  --set 
+  --column = value1,
+  --column2 = value2,
+  --where condition
+
+  -- UPDATE courses
+  --  set 
+  --  course_name = 'PostgreSQL for beginners',
+  --  description = 'to expert in pstgresql'
+  -- where course_id = 1;
+  -- UPDATE courses
+  --  set 
+  --  course_name = 'PostgreSQL for mastering',
+  --  description = 'to expert in pstgresql'
+  -- where course_id > 4;
+  -- UPDATE courses
+  --  set 
+  --  course_name = 'PostgreSQL for mastering',
+  --  description = 'to expert in pstgresql'
+  -- where course_id > 1 AND course_id < 5;
+  UPDATE courses
+   set 
+   course_name = 'PostgreSQL for beginners',
+   description = 'to expert in postgresql'
+  where course_id > 1 AND course_id < 5;
+
+--#delete row
+  DELETE from courses 
+  WHERE course_id = 1;
+  SELECT * from courses;
+
+---date yyyy-mm-DD
