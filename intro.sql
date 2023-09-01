@@ -348,14 +348,14 @@ INSERT INTO
         joining_date
     )
 VALUES (
-        'kamrul11',
-        'kamrul33@gmail.com',
-        36556,
+        'amir',
+        'Amirl33@gmail.com',
+        365356,
         '2012-07-12',
         'IT'
     ), (
-        'kamrul43',
-        'kamrul43@gmail.com',
+        'BIR',
+        'BIR@gmail.com',
         66666,
         '2221-07-22',
         'HR'
@@ -376,62 +376,62 @@ INSERT INTO
         deptId
     )
 VALUES (
-        'kamrul111',
-        'kamrul331@gmail.com',
+        'AMIR',
+        'AMIR1@gmail.com',
         36556,
         '2012-07-12',
         1
     ), (
-        'kamrul431',
-        'kamrul431@gmail.com',
+        'BAKER',
+        'BAKERl431@gmail.com',
         667666,
         '2221-07-22',
         3
     ), (
-        'kamrul113',
-        'kamrul333@gmail.com',
+        'CELI',
+        'CELI33@gmail.com',
         365756,
         '2012-07-12',
         4
     ), (
-        'kamrul443',
-        'kamrul443@gmail.com',
+        'Dulal',
+        'Dulal@gmail.com',
         666766,
         '2221-07-22',
         3
     ), (
-        'kamrul11',
-        'kamrul33@gmail.com',
-        36556,
+        'emran',
+        'emran3@gmail.com',
+        90000,
         '2012-07-12',
         3
     ), (
-        'kamrul433',
-        'kamrul43gmail.com',
-        66666,
+        'fakir',
+        'fakirl43gmail.com',
+        50000,
         '2221-07-22',
         2
     ), (
-        'kamrul31',
-        'kamrul333@gmail.com',
-        36556,
+        'gamal',
+        'gamal3@gmail.com',
+        10000,
         '2012-07-12',
         2
     ), (
-        'kamrul433',
-        'kamrul43@gmail.com',
-        66666,
+        'hanif',
+        'hanif@gmail.com',
+        6336,
         '2221-07-22',
         5
     ), (
-        'kamrul131',
+        'kamrul1331',
         'kamrul34@gmail.com',
-        36556,
+        7756,
         '2012-07-12',
         5
     ), (
-        'kamrul433',
-        'kamrul434@gmail.com',
+        'ka3mrul3433',
+        'kamr3ul434@gmail.com',
         66666,
         '2221-07-22',
         2
@@ -461,7 +461,7 @@ select * from employee where joining_date <= '2022-01-09';
 
 select * from employee WHERE name <> 'kamrul43';
 
---- not ar shate aro condition use kora
+--- not use less and getter than <> ar shate aro condition use kora
 
 select *
 from employee
@@ -470,4 +470,23 @@ WHERE
     AND salary < 60000
     OR name = 'kamrul11';
 
----use selext
+ --# name  order BY NAME ASC;
+SELECT * from employee 
+ORDER BY name ASC;
+ --# name  order BY NAME desc;
+SELECT * from employee 
+ORDER BY name DESC;
+
+---limit data ORDER BY name ASC limit 10
+SELECT * from employee ORDER BY name ASC LIMIT 5;
+---limit data AND PAGE ORDER BY name ASC limit 10 
+SELECT * from employee ORDER BY name 
+ASC LIMIT 5 OFFSET 6;
+
+---#HIGHEST SALARY 
+SELECT * FROM employee ORDER BY salary DESC ;
+---#HIGHEST SALARY LIMIT 
+SELECT * FROM employee ORDER BY salary DESC LIMIT 1;
+---# 3RD HIGHEST SALARY FROM EMPLOYEE
+SELECT * FROM employee ORDER BY salary DESC 
+LIMIT 1 OFFSET 4;
