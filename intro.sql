@@ -490,3 +490,38 @@ SELECT * FROM employee ORDER BY salary DESC LIMIT 1;
 ---# 3RD HIGHEST SALARY FROM EMPLOYEE
 SELECT * FROM employee ORDER BY salary DESC 
 LIMIT 1 OFFSET 4;
+
+
+----IN ,NOT IN, BETWEEN, LIKE id khuje ber kora and fixed id cara
+
+SELECT * FROM employee where empid IN (2,3,5);
+SELECT * FROM employee where empid NOT IN (2,3,5);
+
+---between dia range ar vitre ber kora
+SELECT * FROM employee where salary BETWEEN 10000 AND 50000;
+
+---STRING SEARCHING USE LIKE
+SELECT * FROM employee WHERE name LIKE 'e%';
+
+---at lest correcter thaka 
+select * from employee WHERE NAME Like '%mal%';
+
+--last correcter ber kora 
+select * from employee WHERE NAME Like '%l';
+
+
+----specific position second position SELECT * FROM employee where name Like '_r' 
+SELECT * FROM employee where name Like '___m%'
+
+--- majer corecter specipic
+SELECT * FROM employee where name Like '__m_____%'
+
+--first and last corecter
+SELECT * FROM employee where name Like 'g%l';
+update employee set deptid = null where empid =1;
+
+
+select * from employee where deptid is NULL;
+
+
+---joining two table basics types inner join 
