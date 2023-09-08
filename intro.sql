@@ -68,8 +68,7 @@ CREATE TABLE
 
 insert into
     user1 (user_id, username, email, age)
-VALUES
-(
+VALUES (
         1,
         'kamrul',
         'kamrul@gmail.com',
@@ -80,8 +79,7 @@ VALUES
 
 INSERT INTO
     user1 (username, email)
-VALUES
-(
+VALUES (
         'kamrul33',
         'kamrul33@gmail.com'
     ), (
@@ -306,8 +304,7 @@ VALUES (
 
 -- where course_id > 1 AND course_id < 5;
 
-UPDATE
-    courses
+UPDATE courses
 set
     course_name = 'PostgreSQL for beginners',
     description = 'to expert in postgresql'
@@ -470,58 +467,125 @@ WHERE
     AND salary < 60000
     OR name = 'kamrul11';
 
- --# name  order BY NAME ASC;
-SELECT * from employee 
-ORDER BY name ASC;
- --# name  order BY NAME desc;
-SELECT * from employee 
-ORDER BY name DESC;
+--# name  order BY NAME ASC;
+
+SELECT * from employee ORDER BY name ASC;
+
+--# name  order BY NAME desc;
+
+SELECT * from employee ORDER BY name DESC;
 
 ---limit data ORDER BY name ASC limit 10
+
 SELECT * from employee ORDER BY name ASC LIMIT 5;
----limit data AND PAGE ORDER BY name ASC limit 10 
-SELECT * from employee ORDER BY name 
-ASC LIMIT 5 OFFSET 6;
 
----#HIGHEST SALARY 
+---limit data AND PAGE ORDER BY name ASC limit 10
+
+SELECT * from employee ORDER BY name ASC LIMIT 5 OFFSET 6;
+
+---#HIGHEST SALARY
+
 SELECT * FROM employee ORDER BY salary DESC ;
----#HIGHEST SALARY LIMIT 
-SELECT * FROM employee ORDER BY salary DESC LIMIT 1;
----# 3RD HIGHEST SALARY FROM EMPLOYEE
-SELECT * FROM employee ORDER BY salary DESC 
-LIMIT 1 OFFSET 4;
 
+---#HIGHEST SALARY LIMIT
+
+SELECT * FROM employee ORDER BY salary DESC LIMIT 1;
+
+---# 3RD HIGHEST SALARY FROM EMPLOYEE
+
+SELECT * FROM employee ORDER BY salary DESC LIMIT 1 OFFSET 4;
 
 ----IN ,NOT IN, BETWEEN, LIKE id khuje ber kora and fixed id cara
 
 SELECT * FROM employee where empid IN (2,3,5);
+
 SELECT * FROM employee where empid NOT IN (2,3,5);
 
 ---between dia range ar vitre ber kora
+
 SELECT * FROM employee where salary BETWEEN 10000 AND 50000;
 
 ---STRING SEARCHING USE LIKE
+
 SELECT * FROM employee WHERE name LIKE 'e%';
 
----at lest correcter thaka 
+---at lest correcter thaka
+
 select * from employee WHERE NAME Like '%mal%';
 
---last correcter ber kora 
+--last correcter ber kora
+
 select * from employee WHERE NAME Like '%l';
 
+----specific position second position SELECT * FROM employee where name Like '_r'
 
-----specific position second position SELECT * FROM employee where name Like '_r' 
-SELECT * FROM employee where name Like '___m%'
+SELECT * FROM employee where name Like '___m%' 
 
 --- majer corecter specipic
-SELECT * FROM employee where name Like '__m_____%'
+
+SELECT * FROM employee where name Like '__m_____%' 
 
 --first and last corecter
+
 SELECT * FROM employee where name Like 'g%l';
+
 update employee set deptid = null where empid =1;
 
+---AGGREGATE
 
 select * from employee where deptid is NULL;
 
+---joining two table basics types inner join
 
----joining two table basics types inner join 
+select AVG(salary) from employee;
+
+select MIN(salary) from employee;
+
+select max(salary) from employee;
+
+-- GROUP BY DIA ID AVARAGE SALARY BER KORA ID ER
+
+SELECT deptid, sum (salary) from employee group by deptid;
+
+SELECT deptid, AVG (salary) from employee group by deptid;
+
+---AGGREGATE FUNCTION
+
+--JOINING ID by alias
+
+SELECT *
+FROM employee e
+    RIGHT JOIN department d on e.deptid = d.deptid;
+
+--# GROUP BY dia department name dia
+
+SELECT d.deptname
+from employee e
+    FULL JOIN department d on e.deptid = d.deptid
+GROUP BY d.deptname;
+
+---statastical data find kora GROUP BY and JOIN diaa database ar graf chat korte lage
+
+--2 ways  and coin() count the department total
+
+select
+    d.deptname,
+    sum(salary),
+    avg(salary),
+    max(salary),
+    count(*)
+from department d
+    full join employee e on e.deptid = d.deptid
+GROUP BY d.deptid;
+
+---# group vy filtering add having 
+
+select
+    d.deptname,
+    sum(e.salary),
+    avg(e.salary),
+    max(e.salary),
+    count(*) 
+from department d
+    full join employee e on e.deptid = d.deptid
+GROUP BY d.deptname HAVING avg(e.salary) > 60000 ;
